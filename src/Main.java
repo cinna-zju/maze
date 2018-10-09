@@ -9,7 +9,7 @@ public class Main extends Application {
         try {
             BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("/View/CreateMaze.fxml"));
 
-            Scene scene = new Scene(root, 500, 500);
+            Scene scene = new Scene(root, 600, 500);
             pStage.setTitle("Maze");
             pStage.setScene(scene);
             pStage.show();
