@@ -1,4 +1,5 @@
-package sample;
+
+		package sample;
 
 import java.io.File;
 
@@ -20,7 +21,7 @@ public class Character extends HBox{
 	public int cl1,cl2,cl3,cl4;
 	public VBox v1, v2, v3, v4;
 	private Layout layout;
-	private Model modelP, modelS, modelW, modelK, model;
+	private ModelChara model;
 	
 	public Character() {
 		layout = new Layout(); //to have access to button "map";
@@ -34,38 +35,34 @@ public class Character extends HBox{
 		controller();		
 	}
 	
-	/*public Character(int value) {
-		model = new Model(value);
-	}*/
-	
 	public void layoutProf() {
 		//Professor
-		Character(100);
-		Label life1 = new Label("Life : " + model.getValue());
+		Character(100,200,50);
+		Label life1 = new Label("Life : " + model.getLife());
 		Label Skill1 = new Label("Skill : jump");
-		Character(200);
-		Label power1 = new Label("Power : " +model.getValue());
-		Character(50);
-		Label defense1 = new Label("Defense : " +model.getValue());
+		
+		Label power1 = new Label("Power : " +model.getPower());
+		
+		Label defense1 = new Label("Defense : " +model.getDefense());
 
 		if(cl1== 1) {
 			v1.getChildren().addAll(life1,Skill1,power1,defense1);
 		}		
 	}
 	
-	private void Character(int i) {
+	private void Character(int life, int power, int defense) {
 		// TODO Auto-generated method stub
-		model = new Model(i);
+		model = new ModelChara(life,power,defense);
 	}
 
 	public void layoutWarrior() {
-		Character(180);
-		Label life2 = new Label("Life : " +model.getValue());
+		Character(180,100,300);
+		Label life2 = new Label("Life : " +model.getLife());
 		Label Skill2 = new Label("Skill : climb");
-		Character(100);
-		Label power2 = new Label("Power : " +model.getValue());
-		Character(300);
-		Label defense2 = new Label("Defense : " +model.getValue());
+		
+		Label power2 = new Label("Power : " +model.getPower());
+		
+		Label defense2 = new Label("Defense : " +model.getDefense());
 		if(cl2 == 1) {
 			v2.getChildren().addAll(life2,Skill2,power2,defense2);
 		}
@@ -73,26 +70,26 @@ public class Character extends HBox{
 	
 	public void layoutKing() {
 		//Characteristics
-		Character(150);
-		Label life3 = new Label("Life : " + model.getValue());
+		Character(150,80,50);
+		Label life3 = new Label("Life : " + model.getLife());
 		Label Skill3 = new Label("Skill : sword");
-		Character(80);
-		Label power3 = new Label("Power : " + model.getValue());
-		Character(50);
-		Label defense3 = new Label("Defense : " + model.getValue());
+		
+		Label power3 = new Label("Power : " + model.getPower());
+		
+		Label defense3 = new Label("Defense : " + model.getDefense());
 		if(cl3 == 1) { 
 		v3.getChildren().addAll(life3,Skill3,power3,defense3);
 		}
 	}
 
 	public void layoutSoldier() {	
-		Character(200);
-		Label life4 = new Label("Life : " + model.getValue());
+		Character(200,250,150);
+		Label life4 = new Label("Life : " + model.getLife());
 		Label Skill4 = new Label("Skill : jump");
-		Character(250);
-		Label power4 = new Label("Power : " +model.getValue());
-		Character(150);
-		Label defense4 = new Label("Defense : "+model.getValue());
+
+		Label power4 = new Label("Power : " +model.getPower());
+
+		Label defense4 = new Label("Defense : "+model.getDefense());
 		if(cl4 == 1) {
 		v4.getChildren().addAll(life4,Skill4,power4,defense4);
 		}
@@ -204,4 +201,4 @@ public class Character extends HBox{
 		this.getChildren().addAll(v1,v2,v3,v4);
 		}
 }
-			
+	
