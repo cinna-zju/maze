@@ -1,13 +1,21 @@
 package Model;
 
-public class ModelChara {
+import javafx.scene.image.Image;
+
+public class Character {
 	
 	private Integer life, power, defense;
+	public int posX;
+	public int posY;
+	private Image avator;
 	
-	public ModelChara(Integer life, Integer power, Integer defense) {
+	public Character(Integer life, Integer power, Integer defense) {
 		this.life = life;
 		this.power = power;
 		this.defense = defense;
+		posX = 0;
+		posY = 0;
+		avator = new Image("/img/warrior.png");
 	}
 	// Setters
 	public void setLife(Integer value) {
@@ -21,6 +29,10 @@ public class ModelChara {
 	public void setDefense(Integer value) {
 		this.defense = value;
 	}
+
+	public void setAvator(String path){
+	    avator = new Image(path);
+    }
 	
 	//Getters
 	public Integer getLife() {
@@ -34,4 +46,6 @@ public class ModelChara {
 	public Integer getDefense() {
 		return defense;
 	}
+
+
 }

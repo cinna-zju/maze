@@ -1,5 +1,4 @@
 package View;
-import Model.ModelChara;
 
 import javafx.geometry.Insets;
 
@@ -17,7 +16,7 @@ public class Character extends HBox{
 	public int cl1,cl2,cl3,cl4;
 	public VBox v1, v2, v3, v4;
 	private Layout layout;
-	private ModelChara model;
+	private Model.Character model;
 	
 	public Character() {
 		layout = new Layout(); //to have access to button "map";
@@ -48,7 +47,7 @@ public class Character extends HBox{
 	
 	private void Character(int life, int power, int defense) {
 		// TODO Auto-generated method stub
-		model = new ModelChara(life,power,defense);
+		model = new Model.Character(life,power,defense);
 	}
 
 	public void layoutWarrior() {

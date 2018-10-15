@@ -33,9 +33,11 @@ public class Game extends Application {
                 maze.init();
 
                 maze.next.setOnMouseClicked(e -> {
+
                     PlayPane play = new PlayPane();
-                    play.playPanegp = maze.gp;
                     play.init();
+                    play.setMap(maze.generateMap(maze.grid));
+                    play.drawCharacter();
                     Scene scene = new Scene(play, 800, 800);
                     pStage.setScene(scene);
                 });

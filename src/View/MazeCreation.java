@@ -24,7 +24,7 @@ public class MazeCreation extends BorderPane {
     MyButton btnCtrl;
 
 
-    static public Button[][] grid;
+    public Button[][] grid;
 
     int size = 8;
 
@@ -79,10 +79,13 @@ public class MazeCreation extends BorderPane {
         for(int i = 0; i < size; i++){
             for(int j = 0; j < size; j++) {
                 grid[i][j] = new Button();
+                grid[i][j].setId("");
+
                 grid[i][j].setStyle("-fx-pref-width: 64px; -fx-pref-height: 64px;-fx-padding: 0;");
                 if (isOpen[i][j] == 0){
 
                     grid[i][j].setGraphic(new ImageView(new Image("/img/wall.png")));
+                    grid[i][j].setId("wall");
                 }
                 gp.add(grid[i][j], j, i);
 
@@ -98,6 +101,17 @@ public class MazeCreation extends BorderPane {
 
 
 
+    }
+
+    public String[][] generateMap(Button[][] btns){
+        String[][] maps = new String[size][size];
+        for(int i = 0; i < btns.length; i++){
+            for(int j = 0; j < btns[i].length; j++){
+                maps[i][j] = btns[i][j].getId();
+            }
+        }
+
+        return maps;
     }
 
 }

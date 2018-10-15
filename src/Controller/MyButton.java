@@ -17,18 +17,26 @@ public class MyButton {
             @Override
             public void handle(MouseEvent event) {
                 Dragboard db = btn.startDragAndDrop(TransferMode.MOVE);
-                if(btn.getText().equals("monster"))
-                    db.setDragView(new Image("/img/monster.png"));
-
-                if(btn.getText().equals("treasure"))
-                    db.setDragView(new Image("/img/treasure.png"));
-
-                if(btn.getText().equals("potion"))
-                    db.setDragView(new Image("/img/potion.png"));
-
-
                 ClipboardContent content = new ClipboardContent();
-                content.putImage(db.getDragView());
+
+                if(btn.getText().equals("monster")){
+//                    db.setDragView(new Image("/img/monster.png"));
+                    content.putString("monster");
+
+                }
+
+
+                if(btn.getText().equals("treasure")){
+//                    db.setDragView(new Image("/img/treasure.png"));
+                    content.putString("treasure");
+                }
+
+                if(btn.getText().equals("potion")){
+//                    db.setDragView(new Image("/img/potion.png"));
+                    content.putString("potion");
+                }
+
+                //content.putImage(db);
                 db.setContent(content);
                 event.consume();
             }
@@ -41,10 +49,26 @@ public class MyButton {
         btn.setOnDragDropped(new EventHandler<DragEvent>() {
             @Override
             public void handle(DragEvent event) {
-                System.out.println(btn.getHeight()+" "+btn.getWidth());
+                //System.out.println(btn.getHeight()+" "+btn.getWidth());
+                String src = event.getDragboard().getContent(DataFormat.PLAIN_TEXT).toString();
+                if(src.equals("monster")){
+                    btn.setGraphic(new ImageView(new Image("/img/monster.png")));
+                    btn.setId("monster");
+                }
 
-                btn.setGraphic(new ImageView(event.getDragboard().getImage()));
-                System.out.println(btn.getHeight()+" "+btn.getWidth());
+                if(src.equals("treasure")){
+                    btn.setGraphic(new ImageView(new Image("/img/treasure.png")));
+                    btn.setId("treasure");
+                }
+
+                if(src.equals("potion")){
+                    btn.setGraphic(new ImageView(new Image("/img/potion.png")));
+                    btn.setId("potion");
+                }
+
+
+
+                //System.out.println(btn.getHeight()+" "+btn.getWidth());
                 event.consume();
                 event.setDropCompleted(true);
 
