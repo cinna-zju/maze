@@ -1,18 +1,24 @@
-package sample;
+package Controller;
 
+
+import View.Character;
+import View.Layout;
+import View.MazeCreation;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+
 
 public class Controller extends BorderPane {
 	
 	public Character ch;
-	private Layout layout;
-	
+	public Layout layout;
+
+
+
+
 	public Controller() {
 	this.setPadding(new Insets(10,10,10,10));
 	this.setStyle("-fx-background-color: #8fbc8f");
@@ -35,6 +41,16 @@ public class Controller extends BorderPane {
 	layout.exit.setOnMouseClicked(event ->{
 			System.exit(0);
 		});
+
+//	layout.map.setOnMouseClicked(event -> {
+//
+//
+//
+//
+//
+//
+//
+//	});
 
 	this.setCenter(layout.vbox());
 	}

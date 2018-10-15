@@ -1,19 +1,15 @@
+package View;
+import Model.ModelChara;
 
-		package sample;
-
-import java.io.File;
-
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
-import javafx.scene.Group;
-import javafx.scene.GroupBuilder;
-import javafx.scene.Node;
+
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
+
 
 public class Character extends HBox{
 	
@@ -96,7 +92,7 @@ public class Character extends HBox{
 	}
 	
 	public void controller() {
-		skills();
+		//skills();
 		// HBox for 4 characters
 		choice = "";
 	//Professor
@@ -109,7 +105,7 @@ public class Character extends HBox{
 		Label name1 = new Label("Professor");
 		
 		// image...
-				Image prof = new Image("/professor.png",30,30,false,false);
+				Image prof = new Image("/img/professor.png",30,30,false,false);
 				ImageView iv1 = new ImageView();
 
 				iv1.setImage(prof);
@@ -146,7 +142,7 @@ public class Character extends HBox{
 			
 		Label name2 = new Label("Warrior");
 		// image...
-		Image warrior = new Image("/warrior.png",30,30,false,false);
+		Image warrior = new Image("/img/warrior.png",30,30,false,false);
 		ImageView iv2 = new ImageView();
 		v2.getChildren().addAll(name2,iv2);
 		iv2.setImage(warrior);
@@ -169,7 +165,7 @@ public class Character extends HBox{
 				});
 		Label name3 = new Label("King");
 		// image...
-		Image king = new Image("/king.png",30,30,false,false);
+		Image king = new Image("/img/king.png",30,30,false,false);
 		ImageView iv3 = new ImageView();
 		v3.getChildren().addAll(name3,iv3);
 		iv3.setImage(king);
@@ -193,7 +189,7 @@ public class Character extends HBox{
 				});
 		Label name4 = new Label("Soldier");
 		// image...
-		Image soldier = new Image("/soldier.png",30,30,false,false);
+		Image soldier = new Image("/img/soldier.png",30,30,false,false);
 		ImageView iv4 = new ImageView();
 		v4.getChildren().addAll(name4,iv4);
 		iv4.setImage(soldier);

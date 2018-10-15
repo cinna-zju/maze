@@ -1,4 +1,4 @@
-package sample;
+package Model;
 
 public class ModelChara {
 	

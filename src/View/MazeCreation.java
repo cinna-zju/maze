@@ -15,8 +15,9 @@ public class MazeCreation extends BorderPane {
     public Button Monster;
     public Button Treasure;
     public Button Potion;
-    Button next;
-    Button back;
+    public GridPane gp;
+    public Button next;
+    public Button back;
 
     Label title;
 
@@ -74,7 +75,7 @@ public class MazeCreation extends BorderPane {
         grid = new Button[size][size];
 
 
-        GridPane gp = new GridPane();
+        gp = new GridPane();
         for(int i = 0; i < size; i++){
             for(int j = 0; j < size; j++) {
                 grid[i][j] = new Button();
