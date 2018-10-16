@@ -8,9 +8,16 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
+import javafx.stage.Stage;
 
 
 public class MyButton {
+    Stage stage;
+
+    public MyButton(Stage stage){
+        this.stage = stage;
+
+    }
 
     public void initDragSource(Button btn){
         btn.setOnDragDetected(new EventHandler<MouseEvent>() {
@@ -112,9 +119,6 @@ public class MyButton {
 
     public void toPlay(Button btn){
         btn.setOnMouseClicked(event -> {
-
-
-
 
 
         });

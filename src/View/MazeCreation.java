@@ -1,6 +1,7 @@
 package View;
 
 import Controller.MyButton;
+import Model.Maze;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -9,6 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class MazeCreation extends BorderPane {
 
@@ -22,11 +24,16 @@ public class MazeCreation extends BorderPane {
     Label title;
 
     MyButton btnCtrl;
+    public Stage stage;
+
+    public Maze mazeData;
+
+
 
 
     public Button[][] grid;
 
-    int size = 8;
+    int size;
 
     int[][] isOpen = {
             {1,1,1,1,1,1,1,1},
@@ -37,7 +44,14 @@ public class MazeCreation extends BorderPane {
             {1,0,1,1,0,1,1,1},
             {1,0,1,1,0,1,1,1},
             {1,1,0,0,1,1,1,1},
-};
+    };;
+
+    public MazeCreation(Stage stage){
+        this.stage = stage;
+        size = 8;
+        mazeData = new Maze();
+
+    }
 
     public void init(){
         title = new Label("- Create Your Maze -");
@@ -58,7 +72,7 @@ public class MazeCreation extends BorderPane {
         Potion.setStyle("-fx-pref-width: 180px; -fx-pref-height: 64px;-fx-padding: 0;");
 
 
-        btnCtrl = new MyButton();
+        btnCtrl = new MyButton(stage);
 
         btnCtrl.initDragSource(Monster);
         btnCtrl.initDragSource(Treasure);

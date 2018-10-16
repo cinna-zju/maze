@@ -1,11 +1,17 @@
 package Model;
 
+import javafx.scene.control.Button;
+
 import java.util.ArrayList;
 
 public class Maze {
-    private int Xsize;
-    private int Ysize;
-    private int Type;
+    public int size;
+//    private int Ysize;
+//    private int Type;
+
+    public Character ch;
+    public Button[][] grid;
+    public String[][] src;
 
     private int MonsterNum;
     private ArrayList<Integer> MonsterPosX;
@@ -23,20 +29,26 @@ public class Maze {
     public int getTreasureNum(){return TreasureNum;}
     public int getPotionNum(){return PotionNum;}
 
-    Maze(int Xsize, int Ysize, int Type){
-        this.Xsize = Xsize;
-        this.Ysize = Ysize;
-        this.Type = Type;
-        MonsterNum = 0;
-        TreasureNum = 0;
-        PotionNum = 0;
+//    Maze(int Xsize, int Ysize, int Type){
+//        this.Xsize = Xsize;
+//        this.Ysize = Ysize;
+//        this.Type = Type;
+//        MonsterNum = 0;
+//        TreasureNum = 0;
+//        PotionNum = 0;
+//
+//        MonsterPosX = new ArrayList<>();
+//        MonsterPosY = new ArrayList<>();
+//        TreasurePosX = new ArrayList<>();
+//        TreasurePosY = new ArrayList<>();
+//        PotionPosX = new ArrayList<>();
+//        PotionPosY = new ArrayList<>();
+//    }
 
-        MonsterPosX = new ArrayList<>();
-        MonsterPosY = new ArrayList<>();
-        TreasurePosX = new ArrayList<>();
-        TreasurePosY = new ArrayList<>();
-        PotionPosX = new ArrayList<>();
-        PotionPosY = new ArrayList<>();
+    public Maze(){
+        ch = new Character(3,1,1);
+        size = 8;
+        src = new String[size][size];
     }
 
     public void setMonster(int x, int y){
