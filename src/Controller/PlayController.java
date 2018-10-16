@@ -1,23 +1,16 @@
 package Controller;
 
-import Model.Character;
+
 import Model.Maze;
-import View.PlayPane;
-import javafx.event.EventHandler;
-import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 public class PlayController {
     
-    Maze mazeData = new Maze();
+    private Maze mazeData;
     
     public PlayController(Maze mazeSrc){
         mazeData = mazeSrc;
-        
-        
     }
     
     public void handle(KeyEvent e) {
@@ -39,7 +32,7 @@ public class PlayController {
         
     }
 
-    public void checkAndMove(int dx, int dy){
+    private void checkAndMove(int dx, int dy){
         int x = mazeData.ch.posX+dx;
         int y = mazeData.ch.posY+dy;
         if( x < 0 || x >= mazeData.size || y < 0 || y >= mazeData.size) return;
@@ -49,7 +42,7 @@ public class PlayController {
 
         mazeData.ch.posX = x;
         mazeData.ch.posY = y;
-        System.out.println(x+" "+y);
+//        System.out.println(x+" "+y);
 
     }
 

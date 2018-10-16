@@ -1,7 +1,7 @@
 package Controller;
 
 
-import Model.Maze;
+
 import View.Character;
 import View.Layout;
 import View.MazeCreation;
@@ -14,20 +14,20 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 
+
 public class Controller extends BorderPane {
 	
-	public Character ch;
-	public Layout layout;
-	Stage stage;
-    MazeCreation maze;
+	private Character ch;
+	private Layout layout;
+	private Stage stage;
+    private MazeCreation maze;
 
 
 
 
 
-    public Controller(Stage stage) {
-
-        this.stage = stage;
+    public Controller(Stage pStage) {
+        stage = pStage;
 
         this.setPadding(new Insets(10, 10, 10, 10));
         this.setStyle("-fx-background-color: #8fbc8f");
@@ -47,12 +47,12 @@ public class Controller extends BorderPane {
             this.setCenter(ch);
         });
 
-        layout.exit.setOnMouseClicked(event -> {
-            System.exit(0);
-        });
+        layout.exit.setOnMouseClicked(event -> System.exit(0));
 
         layout.map.setOnMouseClicked(event -> {
-            maze = new MazeCreation(stage);
+            //Window that = layout.map.getScene().;
+
+            maze = new MazeCreation();
 
             maze.init();
 
@@ -64,6 +64,7 @@ public class Controller extends BorderPane {
                 play.drawCharacter();
                 Scene scene = new Scene(play, 800, 800);
                 stage.setScene(scene);
+
             });
 
             Scene scene = new Scene(maze, 800, 800);
@@ -74,5 +75,5 @@ public class Controller extends BorderPane {
 
         this.setCenter(layout.vbox());
     }
-	
+
 }

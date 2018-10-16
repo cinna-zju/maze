@@ -10,21 +10,19 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+
 
 public class MazeCreation extends BorderPane {
 
-    public Button Monster;
-    public Button Treasure;
-    public Button Potion;
-    public GridPane gp;
+    private Button Monster;
+    private Button Treasure;
+    private Button Potion;
     public Button next;
     public Button back;
 
     Label title;
 
     MyButton btnCtrl;
-    public Stage stage;
 
     public Maze mazeData;
 
@@ -44,10 +42,9 @@ public class MazeCreation extends BorderPane {
             {1,0,1,1,0,1,1,1},
             {1,0,1,1,0,1,1,1},
             {1,1,0,0,1,1,1,1},
-    };;
+    };
 
-    public MazeCreation(Stage stage){
-        this.stage = stage;
+    public MazeCreation(){
         size = 8;
         mazeData = new Maze();
 
@@ -72,7 +69,7 @@ public class MazeCreation extends BorderPane {
         Potion.setStyle("-fx-pref-width: 180px; -fx-pref-height: 64px;-fx-padding: 0;");
 
 
-        btnCtrl = new MyButton(stage);
+        btnCtrl = new MyButton();
 
         btnCtrl.initDragSource(Monster);
         btnCtrl.initDragSource(Treasure);
@@ -89,7 +86,7 @@ public class MazeCreation extends BorderPane {
         grid = new Button[size][size];
 
 
-        gp = new GridPane();
+        GridPane gp = new GridPane();
         for(int i = 0; i < size; i++){
             for(int j = 0; j < size; j++) {
                 grid[i][j] = new Button();
