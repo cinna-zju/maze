@@ -1,7 +1,6 @@
 package View;
 
-import Controller.MyButton;
-import Model.Maze;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -12,41 +11,25 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 
-public class MazeCreation extends BorderPane {
+public class CreationPane extends BorderPane {
 
-    private Button Monster;
-    private Button Treasure;
-    private Button Potion;
+    public Button Monster;
+    public Button Treasure;
+    public Button Potion;
     public Button next;
     public Button back;
 
     Label title;
-
-    MyButton btnCtrl;
-
-    public Maze mazeData;
-
-
 
 
     public Button[][] grid;
 
     int size;
 
-    int[][] isOpen = {
-            {1,1,1,1,1,1,1,1},
-            {1,1,1,1,1,1,1,1},
-            {1,0,1,1,0,1,0,0},
-            {1,0,1,1,0,1,1,1},
-            {1,0,1,1,0,1,0,0},
-            {1,0,1,1,0,1,1,1},
-            {1,0,1,1,0,1,1,1},
-            {1,1,0,0,1,1,1,1},
-    };
 
-    public MazeCreation(){
+
+    public CreationPane(){
         size = 8;
-        mazeData = new Maze();
 
     }
 
@@ -69,12 +52,6 @@ public class MazeCreation extends BorderPane {
         Potion.setStyle("-fx-pref-width: 180px; -fx-pref-height: 64px;-fx-padding: 0;");
 
 
-        btnCtrl = new MyButton();
-
-        btnCtrl.initDragSource(Monster);
-        btnCtrl.initDragSource(Treasure);
-        btnCtrl.initDragSource(Potion);
-
 
         this.setLeft(new VBox(Monster, Treasure, Potion));
 
@@ -93,14 +70,10 @@ public class MazeCreation extends BorderPane {
                 grid[i][j].setId("");
 
                 grid[i][j].setStyle("-fx-pref-width: 64px; -fx-pref-height: 64px;-fx-padding: 0;");
-                if (isOpen[i][j] == 0){
 
-                    grid[i][j].setGraphic(new ImageView(new Image("/img/wall.png")));
-                    grid[i][j].setId("wall");
-                }
                 gp.add(grid[i][j], j, i);
 
-                btnCtrl.initDragTarget(grid[i][j]);
+
 
             }
         }
@@ -114,15 +87,6 @@ public class MazeCreation extends BorderPane {
 
     }
 
-    public String[][] generateMap(Button[][] btns){
-        String[][] maps = new String[size][size];
-        for(int i = 0; i < btns.length; i++){
-            for(int j = 0; j < btns[i].length; j++){
-                maps[i][j] = btns[i][j].getId();
-            }
-        }
 
-        return maps;
-    }
 
 }
