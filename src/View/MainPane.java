@@ -1,6 +1,5 @@
 package View;
 
-import Controller.MainPaneController;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -13,14 +12,14 @@ public class MainPane extends BorderPane {
 
 	public HBox hb;
 	public VBox vb;
-	public Button start, exit, map;
+	public Button exit, map;
 	public CharacterPane characterPane;
     Label title;
 
 
 	public MainPane() {
 		hb = new HBox();
-        start = new Button("Play");
+
         exit = new Button("Exit");
         map = new Button("Maps");
         characterPane = new CharacterPane();
@@ -51,12 +50,11 @@ public class MainPane extends BorderPane {
                 + "    -fx-background-radius: 30;\n" + "    -fx-background-insets: 0,1,1;\n"
                 + "    -fx-text-fill: black;\n"
                 + "    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );";
-        start.setStyle(styBtn);
         map.setStyle(styBtn);
         map.setAlignment(Pos.BOTTOM_RIGHT);
 
         exit.setStyle(styBtn);
-        vb.getChildren().addAll(start, map, exit);
+        vb.getChildren().addAll(map, exit);
         vb.setAlignment(Pos.BASELINE_CENTER);
 
         this.setPadding(new Insets(10, 10, 10, 10));

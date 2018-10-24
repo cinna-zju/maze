@@ -13,6 +13,8 @@ public class Maze {
     private int PotionNum;
 
 
+
+
     public int getMonsterNum(){return MonsterNum;}
     public int getTreasureNum(){return TreasureNum;}
     public int getPotionNum(){return PotionNum;}
@@ -25,7 +27,7 @@ public class Maze {
             {1,0,1,1,0,1,0,0},
             {1,0,1,1,0,1,1,1},
             {1,0,1,1,0,1,1,1},
-            {1,1,0,0,1,1,1,1},
+            {1,0,0,0,0,1,1,1},
     };
 
 

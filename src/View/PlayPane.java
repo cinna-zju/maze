@@ -16,6 +16,7 @@ public class PlayPane extends BorderPane {
     public int size;
 
 
+
     private ImageView avatar;
     private Label heart;
     private Label HP;
@@ -23,6 +24,7 @@ public class PlayPane extends BorderPane {
     public Label head;
     public Label name;
     public Button[][] grid;
+    public Label jump;
 
     public PlayPane() {
         size = 8;
@@ -33,14 +35,17 @@ public class PlayPane extends BorderPane {
         head = new Label();
         name = new Label();
 
+        jump = new Label();
+
         grid = new Button[size][size];
+
     }
 
 
     public void init(){
 
         HBox lifeBar = new HBox(heart, HP);
-        VBox sideInfo = new VBox(name, head, lifeBar, pos);
+        VBox sideInfo = new VBox(name, head, lifeBar, pos, jump);
 
         heart.setGraphic(new ImageView(new Image("/img/heart.png")));
         head.setGraphic(avatar);

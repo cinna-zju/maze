@@ -51,8 +51,8 @@ public class CharacterPane extends HBox{
             basic[i] = new VBox();
             add[i] = new VBox();
 
-            v[i].setStyle("-fx-spacing: 10px; -fx-padding: 10px; -fx-background-color: #eff144");
-
+            v[i].setStyle("-fx-background-color: #eff144");
+			v[i].setPrefWidth(150);
             basic[i].getChildren().addAll(new Label(ch[i].name), new ImageView(ch[i].avatar));
 
             this.getChildren().add(v[i]);

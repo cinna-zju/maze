@@ -6,8 +6,7 @@ import View.PlayPane;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.input.*;
 
 public class PlayController {
     
@@ -23,6 +22,7 @@ public class PlayController {
     public void init(){
         pp.head.setGraphic(new ImageView(data.ch.avatar));
         pp.name.setText(data.ch.name);
+        pp.jump.setText("Jump Left: " + Integer.toString(data.ch.jumpTimes));
         pp.gp.setOnKeyPressed(event -> {
 
             handle(event);
@@ -30,21 +30,65 @@ public class PlayController {
         });
 
 
+
+
+
+    }
+
+    public void initDragCharacter(){
+        int size = data.size;
+        for(int i = 0; i < size; i++){
+            for(int j = 0; j < size; j++){
+                int x = i;
+                int y = j;
+                pp.grid[j][i].setOnDragDetected(event -> {
+                    if(x == data.ch.posX && y == data.ch.posY){
+                        Dragboard db = pp.grid[y][x].startDragAndDrop(TransferMode.MOVE);
+                        ClipboardContent content = new ClipboardContent();
+                        content.putImage(data.ch.avatar);
+                        db.setContent(content);
+                        event.consume();
+                    }
+                });
+
+                pp.grid[j][i].setOnDragOver(event -> {
+                    event.acceptTransferModes(TransferMode.MOVE);
+                    event.consume();
+                });
+
+                pp.grid[j][i].setOnDragDropped(event -> {
+
+
+                    if( (Math.abs(x - data.ch.posX) == 2 && y - data.ch.posY == 0)
+                    || (Math.abs(y - data.ch.posY) == 2 && x - data.ch.posX == 0) ){
+                        if(data.src[y][x].equals("") && data.ch.jumpTimes > 0){
+                            pp.grid[data.ch.posY][data.ch.posX].setGraphic(null);
+                            data.ch.posX = x;
+                            data.ch.posY = y;
+                            data.ch.jumpTimes--;
+                            pp.jump.setText("Jump Left: " + Integer.toString(data.ch.jumpTimes));
+                            drawCharacter();
+                        }
+
+                    }
+                });
+            }
+        }
     }
 
     public void handle(KeyEvent e) {
 
-        if(e.getCode() == KeyCode.UP){
+        if(e.getCode() == KeyCode.W){
             checkAndMove(0, -1);
 
         }
-        if(e.getCode()== KeyCode.LEFT){
+        if(e.getCode()== KeyCode.A){
             checkAndMove(-1, 0);
         }
-        if(e.getCode()== KeyCode.DOWN){
+        if(e.getCode()== KeyCode.S){
             checkAndMove(0, 1);
         }
-        if(e.getCode()== KeyCode.RIGHT){
+        if(e.getCode()== KeyCode.D){
             checkAndMove(1, 0);
         }
         
@@ -106,6 +150,8 @@ public class PlayController {
 
             }
         }
+
+        initDragCharacter();
 
     }
 

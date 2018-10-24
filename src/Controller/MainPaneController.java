@@ -16,6 +16,7 @@ public class MainPaneController {
     public MainPaneController(MainPane view, Maze model){
         mp = view;
         data = model;
+        mp.map.setDisable(true);
 
     }
 
@@ -60,6 +61,7 @@ public class MainPaneController {
         mp.characterPane.v[x].setStyle("-fx-background-color: #8df144");
         mp.characterPane.add[x].setVisible(true);
         data.ch = mp.characterPane.ch[x];
+        mp.map.setDisable(false);
 
 
     }

@@ -9,12 +9,16 @@ public class Character {
 	public int posY;
 	public Image avatar;
 	public String name;
+	public int jumpTimes;
 
 	
 	public Character(Integer life, Integer power, String name) {
 		this.life = life;
 		this.power = power;
 		this.name = name;
+
+		jumpTimes = 3;
+
 		posX = 0;
 		posY = 0;
 		switch (this.name){
