@@ -3,6 +3,7 @@ package Controller;
 
 import Model.Maze;
 import View.PlayPane;
+import View.Rotation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -103,7 +104,16 @@ public class PlayController {
         if( x < 0 || x >= data.size || y < 0 || y >= data.size) return;
 
         if(data.src[y][x] == "monster"){
-            Game.stage.setScene(new Scene(Game.fightp, 800, 600));
+            Rotation fightp = new Rotation();
+            fightp.init();
+            Fight fightCtrl = new Fight(fightp);
+
+            Scene fight = new Scene(fightp, 800, 600);
+            fightCtrl.init(fight);
+
+
+            Game.stage.setScene(fight);
+
         }
         if(data.src[y][x] != "") return;
 

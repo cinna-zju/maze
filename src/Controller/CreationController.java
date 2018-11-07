@@ -12,6 +12,7 @@ public class CreationController {
 
     CreationPane view;
     Maze data;
+    public static Scene ps;
 
     CreationController(CreationPane cp, Maze maze){
         view = cp;
@@ -29,8 +30,8 @@ public class CreationController {
             Game.ppCtrl.setMap(data.src);
             Game.ppCtrl.drawCharacter();
 
-            Scene scene1 = new Scene(Game.pp, 800, 800);
-            Game.stage.setScene(scene1);
+            ps = new Scene(Game.pp, 800, 800);
+            Game.stage.setScene(ps);
 
         });
 

@@ -1,5 +1,6 @@
 package View;
 
+import Model.Maze;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -11,10 +12,13 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.ArcType;
 import javafx.scene.shape.Line;
@@ -22,17 +26,18 @@ import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
+import Model.Maze;
+
 import java.util.Random;
 
-import Controller.Game;
 
 public class Rotation extends BorderPane {
 
-	static double x, y;
-	static Rotate rot;
-	static Group root;
-	static Timeline secondTime, target;
-	static double alpha, beta;
+	public static double x, y;
+	public static Rotate rot;
+	public static Group root;
+	public static Timeline secondTime, target;
+	public static double alpha, beta;
 
 	public Rotation() {
 
@@ -44,58 +49,52 @@ public class Rotation extends BorderPane {
 		alpha =-110;
 		beta = -70;
 		
-		HBox hb = new HBox();
-		hb.setPadding(new Insets(60,10,10,10));
-		hb.setAlignment(Pos.BASELINE_CENTER);
-		
-		Text legend = new Text();
-		legend.setText("Press SPACE when the line passes the orange part!");
-		legend.setStrokeWidth(10);
-	
-		
-		hb.getChildren().add(legend);
-		this.setTop(hb);
 
-		root = new Group();
+
+		
+	}
+
+	public void init(){
+        HBox hb = new HBox();
+        hb.setPadding(new Insets(60,10,10,10));
+        hb.setAlignment(Pos.BASELINE_CENTER);
+
+        Text legend = new Text();
+        legend.setText("Press SPACE when the line passes the orange part!");
+        legend.setStrokeWidth(10);
+
+        ImageView ch = new ImageView(Maze.ch.avatar);
+        ImageView monster = new ImageView(new Image("/img/monster.png"));
+
+        HBox imgs = new HBox(ch, monster);
+
+
+        hb.getChildren().add(legend);
+
+        this.setTop(new VBox(hb, imgs));
+
+        root = new Group();
 //		primaryStage.setTitle("FIGHT");
-		
-		final Line line = new Line(x, y, 200, 200);
-		line.setFill(Color.RED);
-		line.setStrokeWidth(3);
-		
-		rot.setPivotX(200);
-		rot.setPivotY(200);
-	
-	    line.getTransforms().add(rot);
-	    
-	    animation(line);
+
+        final Line line = new Line(x, y, 200, 200);
+        line.setFill(Color.RED);
+        line.setStrokeWidth(3);
+
+        rot.setPivotX(200);
+        rot.setPivotY(200);
+
+        line.getTransforms().add(rot);
+
+        animation(line);
 
 //		primaryStage.setScene(scene);
 //		primaryStage.show();
 
-		double angle = 0;
-		this.setOnKeyPressed(new EventHandler<KeyEvent>() {
-			@Override
-			public void handle(KeyEvent event) {
-				if(event.getCode()== KeyCode.SPACE) {
-					secondTime.stop();
-					checkAngle();
-					Game.stage.setScene(new Scene(Game.pp, 800, 600));
+        double angle = 0;
 
-				}
-			}
-		});
-		
-	}
+    }
 	
-	public boolean checkAngle() {
-		System.out.println(rot.getAngle());
-		if(rot.getAngle()>alpha+360 && rot.getAngle()<beta+360) {
-			System.out.println(true);
-			return true;
-		}
-		return false;
-	}
+
 	
 	public void animation(Line line) {
 		

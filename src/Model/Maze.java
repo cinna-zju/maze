@@ -5,7 +5,7 @@ package Model;
 public class Maze {
     public int size;
 
-    public Character ch;
+    public static Character ch;
     public String[][] src;
 
     private int MonsterNum;

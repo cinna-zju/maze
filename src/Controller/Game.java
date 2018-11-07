@@ -30,7 +30,7 @@ public class Game extends Application {
 
 
     //fight
-    static Rotation fightp;
+
 
 
 
@@ -50,7 +50,8 @@ public class Game extends Application {
             pp = new PlayPane();
             ppCtrl = new PlayController(pp, maze);
 
-            fightp = new Rotation();
+
+
 
             mp.init();
             mpCtrl.init();
