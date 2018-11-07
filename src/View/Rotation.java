@@ -1,26 +1,16 @@
-package sample;
+package View;
 
-import javafx.event.EventHandler;
-import javafx.event.ActionEvent;
-
-import java.util.Random;
-
-import org.w3c.dom.events.Event;
-
-import javafx.animation.AnimationTimer;
-import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
-import javafx.animation.RotateTransition;
 import javafx.animation.Timeline;
-import javafx.application.Application;
+
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
@@ -30,26 +20,25 @@ import javafx.scene.shape.ArcType;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class Rotation extends Application {
+import java.util.Random;
+
+import Controller.Game;
+
+public class Rotation extends BorderPane {
 
 	static double x, y;
-	static Stage stage;
 	static Rotate rot;
-	static BorderPane bp;
 	static Group root;
 	static Timeline secondTime, target;
 	static double alpha, beta;
 
-	@Override
-	public void start(Stage primaryStage) throws
-	Exception{
+	public Rotation() {
+
 		x = 100;
 		y = 200;
 		rot = new Rotate();
-		bp = new BorderPane();
 		secondTime = new Timeline();
 		target = new Timeline();
 		alpha =-110;
@@ -65,10 +54,10 @@ public class Rotation extends Application {
 	
 		
 		hb.getChildren().add(legend);
-		bp.setTop(hb);
+		this.setTop(hb);
 
 		root = new Group();
-		primaryStage.setTitle("FIGHT");
+//		primaryStage.setTitle("FIGHT");
 		
 		final Line line = new Line(x, y, 200, 200);
 		line.setFill(Color.RED);
@@ -81,16 +70,18 @@ public class Rotation extends Application {
 	    
 	    animation(line);
 
-		Scene scene = new Scene(bp,400,400);	
-		primaryStage.setScene(scene);
-		primaryStage.show();
+//		primaryStage.setScene(scene);
+//		primaryStage.show();
+
 		double angle = 0;
-		scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+		this.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent event) {
 				if(event.getCode()== KeyCode.SPACE) {
 					secondTime.stop();
-					checkAngle();					
+					checkAngle();
+					Game.stage.setScene(new Scene(Game.pp, 800, 600));
+
 				}
 			}
 		});
@@ -115,7 +106,7 @@ public class Rotation extends Application {
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		drawCercle(gc);
 		root.getChildren().addAll(canvas, line);
-		bp.setCenter(root);		
+		this.setCenter(root);
 	       
 	    
 	  secondTime.getKeyFrames().addAll(kf);
@@ -147,7 +138,4 @@ public class Rotation extends Application {
 		gc.setLineWidth(4);
 		
 	}
-		public static void main (String[] args) {
-			launch(args);
-		}
 }

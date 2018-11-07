@@ -1,16 +1,18 @@
 package Controller;
 
+
 import Model.Maze;
 import View.CreationPane;
 import View.MainPane;
 import View.PlayPane;
+import View.Rotation;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Game extends Application {
 
-    static Stage stage;
+    public static Stage stage;
 
     MainPane mp;
     MainPaneController mpCtrl;
@@ -23,8 +25,12 @@ public class Game extends Application {
     static CreationController cpCtrl;
 
     //playpane
-    static PlayPane pp;
+    public static PlayPane pp;
     static PlayController ppCtrl;
+
+
+    //fight
+    static Rotation fightp;
 
 
 
@@ -43,6 +49,8 @@ public class Game extends Application {
 
             pp = new PlayPane();
             ppCtrl = new PlayController(pp, maze);
+
+            fightp = new Rotation();
 
             mp.init();
             mpCtrl.init();

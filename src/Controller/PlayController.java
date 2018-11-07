@@ -3,6 +3,7 @@ package Controller;
 
 import Model.Maze;
 import View.PlayPane;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -100,6 +101,10 @@ public class PlayController {
         System.out.println(x+" "+y);
 
         if( x < 0 || x >= data.size || y < 0 || y >= data.size) return;
+
+        if(data.src[y][x] == "monster"){
+            Game.stage.setScene(new Scene(Game.fightp, 800, 600));
+        }
         if(data.src[y][x] != "") return;
 
         pp.grid[data.ch.posY][data.ch.posX].setGraphic(null);
