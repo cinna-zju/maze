@@ -1,5 +1,6 @@
 package Model;
 
+import Controller.Game;
 import javafx.scene.image.Image;
 
 public class Character {
@@ -46,6 +47,15 @@ public class Character {
 	// Setters
 	public void setLife(Integer value) {
 		this.life = value;
+		if (value == 2){
+            Game.pp.heart3.setDisable(true);
+        }
+        if(value == 1){
+            Game.pp.heart2.setDisable(true);
+        }
+        if(value == 0){
+            Game.pp.heart1.setDisable(true);
+        }
 	}
 	
 	public void setPower(Integer value) {

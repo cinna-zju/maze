@@ -1,6 +1,8 @@
 package Controller;
 
+import Model.Maze;
 import View.Rotation;
+
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
@@ -8,12 +10,14 @@ import javafx.scene.input.KeyEvent;
 
 public class Fight {
     Rotation view;
-    Fight(Rotation fv){
+    private Maze data;
+    Fight(Rotation fv, Maze data){
         this.view = fv;
+        this.data = data;
 
     }
 
-    public void init(Scene f){
+    public void init(Scene f, int x, int y){
         System.out.println("in0");
 
         f.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -24,7 +28,14 @@ public class Fight {
 
                 if(event.getCode()== KeyCode.SPACE) {
                     view.secondTime.stop();
-                    checkAngle();
+                    if(checkAngle()){
+                        data.src[y][x] = "";
+                        PlayController.pp.grid[y][x].setGraphic(null);
+
+                    }else{
+                        data.ch.setLife(data.ch.getLife()-1);
+                    }
+
                     Game.stage.setScene(CreationController.ps);
 
                 }

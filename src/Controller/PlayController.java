@@ -13,8 +13,8 @@ import javafx.scene.input.*;
 public class PlayController {
     
     private Maze data;
-    private PlayPane pp;
-    
+    static public PlayPane pp;
+
     public PlayController(PlayPane pp, Maze data){
         this.pp = pp;
         this.data = data;
@@ -106,10 +106,10 @@ public class PlayController {
         if(data.src[y][x] == "monster"){
             Rotation fightp = new Rotation();
             fightp.init();
-            Fight fightCtrl = new Fight(fightp);
+            Fight fightCtrl = new Fight(fightp, data);
 
             Scene fight = new Scene(fightp, 800, 600);
-            fightCtrl.init(fight);
+            fightCtrl.init(fight, x, y);
 
 
             Game.stage.setScene(fight);
