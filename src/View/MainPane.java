@@ -4,8 +4,11 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 public class MainPane extends BorderPane {
@@ -16,8 +19,13 @@ public class MainPane extends BorderPane {
 	public CharacterPane characterPane;
     Label title;
 
+    public Image avatar = new Image("/img/theatre.png");
+    public ImageView bgv;
+    public StackPane sp;
 
-	public MainPane() {
+
+
+    public MainPane() {
 		hb = new HBox();
 
         exit = new Button("Exit");
@@ -26,12 +34,13 @@ public class MainPane extends BorderPane {
         title = new Label("Crazy Maze!");
 		vb = new VBox();
 
+		bgv = new ImageView(avatar);
+
 	}
 	
 
 	public void init(){
         characterPane.init();
-
 
 
         hb.setPadding(new Insets(10,10,10,10));
@@ -57,11 +66,17 @@ public class MainPane extends BorderPane {
         vb.getChildren().addAll(map, exit);
         vb.setAlignment(Pos.BASELINE_CENTER);
 
-        this.setPadding(new Insets(10, 10, 10, 10));
+        this.setPadding(new Insets(50, 100, 50, 100));
         this.setStyle("-fx-background-color: #8fbc8f");
 
 	    this.setTop(hb);
-        this.setCenter(characterPane);
+
+
+
+
+	    sp = new StackPane(bgv);
+
+        this.setCenter(new VBox(sp, characterPane));
         this.setBottom(vb);
 
 

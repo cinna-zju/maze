@@ -6,6 +6,7 @@ import View.PlayPane;
 import View.Rotation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
@@ -25,6 +26,7 @@ public class PlayController {
         pp.head.setGraphic(new ImageView(data.ch.avatar));
         pp.name.setText(data.ch.name);
         pp.jump.setText("Jump Left: " + Integer.toString(data.ch.jumpTimes));
+
         pp.gp.setOnKeyPressed(event -> {
 
             handle(event);
@@ -99,9 +101,9 @@ public class PlayController {
     private void checkAndMove(int dx, int dy){
         int x = data.ch.posX+dx;
         int y = data.ch.posY+dy;
-        System.out.println(x+" "+y);
 
         if( x < 0 || x >= data.size || y < 0 || y >= data.size) return;
+        if(data.src[y][x] == "wall" || data.src[y][x] == "treasure") return;
 
         if(data.src[y][x] == "monster"){
             Rotation fightp = new Rotation();
@@ -111,20 +113,43 @@ public class PlayController {
             Scene fight = new Scene(fightp, 800, 600);
             fightCtrl.init(fight, x, y);
 
-
             Game.stage.setScene(fight);
+            return;
 
         }
-        if(data.src[y][x] != "") return;
 
-        pp.grid[data.ch.posY][data.ch.posX].setGraphic(null);
+        if(data.src[y][x] == "potion"){
 
-        data.ch.posX = x;
-        data.ch.posY = y;
+            System.out.println(data.ch.getLife());
+            data.src[y][x] = "";
+
+            if(data.ch.getLife() < 3){
+                data.ch.setLife(data.ch.getLife()+1);
+            }
+        }
+
+        if(data.src[y][x] == ""){
+
+            ImageView grass = new ImageView(new Image("/img/grass.png"));
+            grass.setFitHeight(32);
+            grass.setFitWidth(32);
+
+            pp.grid[data.ch.posY][data.ch.posX].setGraphic(grass);
+
+            data.ch.posX = x;
+            data.ch.posY = y;
+
+        }
+
+
 
     }
 
     public void setMap(String[][] maps){
+
+
+
+
 
         int size = data.size;
         for(int i = 0; i < size; i++){
@@ -132,34 +157,52 @@ public class PlayController {
                 pp.grid[i][j] = new Button();
                 switch(maps[i][j]){
                     case "monster": {
-                        pp.grid[i][j].setGraphic(new ImageView(new Image("/img/monster.png")));
+                        ImageView monster = new ImageView(new Image("/img/monster.png"));
+                        monster.setFitHeight(32);
+                        monster.setFitWidth(32);
+                        pp.grid[i][j].setGraphic(monster);
                         pp.grid[i][j].setId("monster");
 
                         break;
                     }
                     case "treasure": {
-                        pp.grid[i][j].setGraphic(new ImageView(new Image("/img/treasure.png")));
+                        ImageView tre = new ImageView(new Image("/img/treasure.png"));
+                        tre.setFitHeight(32);
+                        tre.setFitWidth(32);
+                        pp.grid[i][j].setGraphic(tre);
                         pp.grid[i][j].setId("treasure");
 
                         break;
                     }
                     case "potion": {
-                        pp.grid[i][j].setGraphic(new ImageView(new Image("/img/potion.png")));
+                        ImageView potion = new ImageView(new Image("/img/potion.png"));
+                        potion.setFitWidth(32);
+                        potion.setFitHeight(32);
+                        pp.grid[i][j].setGraphic(potion);
                         pp.grid[i][j].setId("potion");
 
                         break;
                     }
                     case "wall": {
-                        pp.grid[i][j].setGraphic(new ImageView(new Image("/img/wall.png")));
+                        ImageView tree = new ImageView(new Image("/img/tree.png"));
+                        tree.setFitWidth(32);
+                        tree.setFitHeight(32);
+
+
+                        pp.grid[i][j].setGraphic(tree);
                         pp.grid[i][j].setId("wall");
 
                         break;
                     }
-//                    default: {
-//                        data.grid[i][j].setGraphic(new ImageView(new Image("/img/cracks.png")));
-//                    }
+                    default: {
+                        ImageView grass = new ImageView(new Image("/img/grass.png"));
+                        grass.setFitHeight(32);
+                        grass.setFitWidth(32);
+
+                        pp.grid[i][j].setGraphic(grass);
+                    }
                 }
-                pp.grid[i][j].setStyle("-fx-pref-width: 64px; -fx-pref-height: 64px;-fx-padding: 0;");
+                pp.grid[i][j].setStyle("-fx-pref-width: 32px; -fx-pref-height: 32px;-fx-padding: 0;");
                 pp.gp.add(pp.grid[i][j], j, i);
 
 

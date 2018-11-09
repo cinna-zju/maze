@@ -49,13 +49,18 @@ public class Character {
 		this.life = value;
 		if (value == 2){
             Game.pp.heart3.setDisable(true);
+            Game.pp.heart2.setDisable(false);
         }
         if(value == 1){
             Game.pp.heart2.setDisable(true);
+            Game.pp.heart1.setDisable(false);
         }
         if(value == 0){
             Game.pp.heart1.setDisable(true);
         }
+        if(value == 3){
+        	Game.pp.heart3.setDisable(false);
+		}
 	}
 	
 	public void setPower(Integer value) {

@@ -5,7 +5,8 @@ import Model.Maze;
 import View.MainPane;
 
 import javafx.scene.Scene;
-
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 
 public class MainPaneController {
@@ -61,6 +62,12 @@ public class MainPaneController {
         mp.characterPane.v[x].setStyle("-fx-background-color: #8df144");
         mp.characterPane.add[x].setVisible(true);
         data.ch = mp.characterPane.ch[x];
+
+        mp.avatar = data.ch.avatar;
+        if(mp.sp.getChildren().size() > 1) {
+            mp.sp.getChildren().remove(1);
+        }
+        mp.sp.getChildren().add(new ImageView(mp.avatar));
         mp.map.setDisable(false);
 
 

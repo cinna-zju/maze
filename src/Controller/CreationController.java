@@ -65,10 +65,17 @@ public class CreationController {
             for (int j = 0; j < view.grid[i].length; j++){
                 int x = i;
                 int y = j;
+                ImageView grass = new ImageView(new Image("/img/grass.png"));
+                grass.setFitHeight(32);
+                grass.setFitWidth(32);
+                view.grid[x][y].setGraphic(grass);
 
                 if (data.isOpen[i][j] == 0){
+                    ImageView tree = new ImageView(new Image("/img/tree.png"));
+                    tree.setFitWidth(32);
+                    tree.setFitHeight(32);
 
-                    view.grid[i][j].setGraphic(new ImageView(new Image("/img/wall.png")));
+                    view.grid[i][j].setGraphic(tree);
                     view.grid[i][j].setId("wall");
                     data.src[i][j] = "wall";
                 }
@@ -81,20 +88,28 @@ public class CreationController {
                 view.grid[i][j].setOnDragDropped(event -> {
 
                     String src = event.getDragboard().getContent(DataFormat.PLAIN_TEXT).toString();
+                    ImageView img = new ImageView();
+                    img.setFitHeight(32);
+                    img.setFitWidth(32);
                     if(src.equals("monster")){
-                        view.grid[x][y].setGraphic(new ImageView(new Image("/img/monster.png")));
+                        img.setImage(new Image("/img/monster.png"));
+                        view.grid[x][y].setGraphic(img);
                         view.grid[x][y].setId("monster");
                     }
 
                     if(src.equals("treasure")){
-                        view.grid[x][y].setGraphic(new ImageView(new Image("/img/treasure.png")));
+                        img.setImage(new Image("/img/treasure.png"));
+                        view.grid[x][y].setGraphic(img);
                         view.grid[x][y].setId("treasure");
                     }
 
                     if(src.equals("potion")){
-                        view.grid[x][y].setGraphic(new ImageView(new Image("/img/potion.png")));
+                        img.setImage(new Image("/img/potion.png"));
+                        view.grid[x][y].setGraphic(img);
                         view.grid[x][y].setId("potion");
                     }
+
+
                     event.consume();
                     event.setDropCompleted(true);
 

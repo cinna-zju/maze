@@ -31,6 +31,7 @@ public class Rotation extends BorderPane {
 	public static Group root;
 	public static Timeline secondTime, target;
 	public static double alpha, beta;
+	public ImageView ch, monster;
 
 	public Rotation() {
 
@@ -56,10 +57,11 @@ public class Rotation extends BorderPane {
         legend.setText("Press SPACE when the line passes the orange part!");
         legend.setStrokeWidth(10);
 
-        ImageView ch = new ImageView(Maze.ch.avatar);
-        ImageView monster = new ImageView(new Image("/img/monster.png"));
+        ch = new ImageView(Maze.ch.avatar);
+        monster = new ImageView(new Image("/img/monster.png"));
 
         HBox imgs = new HBox(ch, monster);
+        imgs.setSpacing(500);
 
 
         hb.getChildren().add(legend);

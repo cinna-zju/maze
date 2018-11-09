@@ -4,8 +4,10 @@ package View;
 import javafx.geometry.Insets;
 
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 
@@ -18,6 +20,8 @@ public class CharacterPane extends HBox{
  	public Model.Character[] ch;
 
     public Label[] life, skill, power;
+    public Image bg = new Image("/img/theatre.png");
+
 
 
 	public CharacterPane() {
@@ -28,6 +32,7 @@ public class CharacterPane extends HBox{
 		life = new Label[4];
 		skill = new Label[4];
 		power = new Label[4];
+
 
 		v = new VBox[4];
 		basic = new VBox[4];
@@ -51,9 +56,14 @@ public class CharacterPane extends HBox{
             basic[i] = new VBox();
             add[i] = new VBox();
 
-            v[i].setStyle("-fx-background-color: #eff144");
-			v[i].setPrefWidth(150);
-            basic[i].getChildren().addAll(new Label(ch[i].name), new ImageView(ch[i].avatar));
+            v[i].setStyle("-fx-background-color: #eff144; ");
+            v[i].setPrefWidth(150);
+
+            ImageView bgv = new ImageView(bg);
+            StackPane sp = new StackPane(bgv, new ImageView(ch[i].avatar));
+            bgv.setFitWidth(150);
+
+            basic[i].getChildren().addAll(new ImageView(ch[i].avatar) ,new Label(ch[i].name));
 
             this.getChildren().add(v[i]);
 

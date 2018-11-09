@@ -22,7 +22,7 @@ public class CreationPane extends BorderPane {
     Label title;
 
 
-    public Button[][] grid;
+    public Label[][] grid;
 
     int size;
 
@@ -47,9 +47,9 @@ public class CreationPane extends BorderPane {
         Treasure.setGraphic(new ImageView(new Image("/img/treasure.png")));
         Potion.setGraphic(new ImageView(new Image("/img/potion.png")));
 
-        Monster.setStyle("-fx-pref-width: 180px; -fx-pref-height: 64px;-fx-padding: 0;");
-        Treasure.setStyle("-fx-pref-width: 180px; -fx-pref-height: 64px;-fx-padding: 0;");
-        Potion.setStyle("-fx-pref-width: 180px; -fx-pref-height: 64px;-fx-padding: 0;");
+        Monster.setStyle("-fx-pref-width: 180px; -fx-pref-height: 32px;-fx-padding: 0;");
+        Treasure.setStyle("-fx-pref-width: 180px; -fx-pref-height: 32px;-fx-padding: 0;");
+        Potion.setStyle("-fx-pref-width: 180px; -fx-pref-height: 32px;-fx-padding: 0;");
 
 
 
@@ -60,16 +60,16 @@ public class CreationPane extends BorderPane {
 
         this.setBottom(new HBox(back, next));
 
-        grid = new Button[size][size];
+        grid = new Label[size][size];
 
 
         GridPane gp = new GridPane();
         for(int i = 0; i < size; i++){
             for(int j = 0; j < size; j++) {
-                grid[i][j] = new Button();
+                grid[i][j] = new Label();
                 grid[i][j].setId("");
 
-                grid[i][j].setStyle("-fx-pref-width: 64px; -fx-pref-height: 64px;-fx-padding: 0;");
+                grid[i][j].setStyle("-fx-pref-width: 32px; -fx-pref-height: 32px;-fx-padding: 0;");
 
                 gp.add(grid[i][j], j, i);
 
