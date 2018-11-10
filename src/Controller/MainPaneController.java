@@ -4,8 +4,8 @@ import Model.Maze;
 
 import View.MainPane;
 
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 
@@ -27,7 +27,7 @@ public class MainPaneController {
             Game.cp.init();
             Game.cpCtrl.init();
 
-            Scene scene = new Scene(Game.cp, 800, 800);
+            Scene scene = new Scene(Game.cp, 600, 600);
             Game.stage.setScene(scene);
 
 
@@ -67,7 +67,11 @@ public class MainPaneController {
         if(mp.sp.getChildren().size() > 1) {
             mp.sp.getChildren().remove(1);
         }
-        mp.sp.getChildren().add(new ImageView(mp.avatar));
+        ImageView chv = new ImageView(mp.avatar);
+        chv.setFitHeight(100);
+        chv.setFitWidth(100);
+        mp.sp.getChildren().add(chv);
+        mp.sp.setAlignment(Pos.BOTTOM_CENTER);
         mp.map.setDisable(false);
 
 

@@ -30,7 +30,7 @@ public class CreationController {
             Game.ppCtrl.setMap(data.src);
             Game.ppCtrl.drawCharacter();
 
-            ps = new Scene(Game.pp, 800, 800);
+            ps = new Scene(Game.pp, 600, 600);
             Game.stage.setScene(ps);
 
         });
@@ -76,8 +76,18 @@ public class CreationController {
                     tree.setFitHeight(32);
 
                     view.grid[i][j].setGraphic(tree);
-                    view.grid[i][j].setId("wall");
-                    data.src[i][j] = "wall";
+                    view.grid[i][j].setId("tree");
+                    data.src[i][j] = "tree";
+                }
+
+                if (data.isOpen[i][j] == 2){
+                    ImageView mtn = new ImageView(new Image("/img/mountain.png"));
+                    mtn.setFitWidth(32);
+                    mtn.setFitHeight(32);
+
+                    view.grid[i][j].setGraphic(mtn);
+                    view.grid[i][j].setId("mtn");
+                    data.src[i][j] = "mtn";
                 }
 
                 view.grid[x][y].setOnDragOver(event -> {
@@ -92,7 +102,7 @@ public class CreationController {
                     img.setFitHeight(32);
                     img.setFitWidth(32);
                     if(src.equals("monster")){
-                        img.setImage(new Image("/img/monster.png"));
+                        img.setImage(new Image("/img/mon_bg.png"));
                         view.grid[x][y].setGraphic(img);
                         view.grid[x][y].setId("monster");
                     }
@@ -104,7 +114,7 @@ public class CreationController {
                     }
 
                     if(src.equals("potion")){
-                        img.setImage(new Image("/img/potion.png"));
+                        img.setImage(new Image("/img/potion_bg.png"));
                         view.grid[x][y].setGraphic(img);
                         view.grid[x][y].setId("potion");
                     }

@@ -1,6 +1,8 @@
 package View;
 
 
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -27,7 +29,7 @@ public class PlayPane extends BorderPane {
     public Label jump;
 
     public PlayPane() {
-        size = 8;
+        size = 14;
         heart1 = new Label();
         heart2 = new Label();
         heart3 = new Label();
@@ -48,6 +50,9 @@ public class PlayPane extends BorderPane {
 
         HBox lifeBar = new HBox(heart1, heart2, heart3);
         VBox sideInfo = new VBox(name, head, lifeBar, pos, jump);
+        sideInfo.setStyle("-fx-spacing: 20px; -fx-padding: 10px; -fx-pref-width: 100px;");
+        sideInfo.setAlignment(Pos.TOP_CENTER);
+
 
         heart1.setGraphic(new ImageView(new Image("/img/heart.png")));
         heart2.setGraphic(new ImageView(new Image("/img/heart.png")));
@@ -57,7 +62,8 @@ public class PlayPane extends BorderPane {
 
         this.setLeft(sideInfo);
         this.setCenter(gp);
-        sideInfo.setStyle("-fx-spacing: 20px; -fx-padding: 10px; -fx-pref-width: 100px;");
+
+        this.setPadding(new Insets(60, 15, 60, 15));
 
 
 

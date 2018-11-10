@@ -9,6 +9,7 @@ public class Character {
 	public int posX;
 	public int posY;
 	public Image avatar;
+	public Image avatarbg;
 	public String name;
 	public int jumpTimes;
 
@@ -31,7 +32,9 @@ public class Character {
 
 			}
 			case "king":{
-				avatar = new Image("/img/king.png");break;
+				avatar = new Image("/img/king.png");
+				avatarbg = new Image("/img/king_bg.png");
+				break;
 
 			}
 			case "soldier":{

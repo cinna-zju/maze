@@ -23,7 +23,10 @@ public class PlayController {
     }
 
     public void init(){
-        pp.head.setGraphic(new ImageView(data.ch.avatar));
+        ImageView av = new ImageView(data.ch.avatar);
+        av.setFitWidth(64);
+        av.setFitHeight(64);
+        pp.head.setGraphic(av);
         pp.name.setText(data.ch.name);
         pp.jump.setText("Jump Left: " + Integer.toString(data.ch.jumpTimes));
 
@@ -66,7 +69,10 @@ public class PlayController {
                     if( (Math.abs(x - data.ch.posX) == 2 && y - data.ch.posY == 0)
                     || (Math.abs(y - data.ch.posY) == 2 && x - data.ch.posX == 0) ){
                         if(data.src[y][x].equals("") && data.ch.jumpTimes > 0){
-                            pp.grid[data.ch.posY][data.ch.posX].setGraphic(null);
+                            ImageView grass = new ImageView(new Image("/img/grass.png"));
+                            grass.setFitHeight(32);
+                            grass.setFitWidth(32);
+                            pp.grid[data.ch.posY][data.ch.posX].setGraphic(grass);
                             data.ch.posX = x;
                             data.ch.posY = y;
                             data.ch.jumpTimes--;
@@ -103,7 +109,7 @@ public class PlayController {
         int y = data.ch.posY+dy;
 
         if( x < 0 || x >= data.size || y < 0 || y >= data.size) return;
-        if(data.src[y][x] == "wall" || data.src[y][x] == "treasure") return;
+        if(data.src[y][x] == "tree" || data.src[y][x] == "treasure" || data.src[y][x] == "mtn") return;
 
         if(data.src[y][x] == "monster"){
             Rotation fightp = new Rotation();
@@ -147,17 +153,13 @@ public class PlayController {
 
     public void setMap(String[][] maps){
 
-
-
-
-
         int size = data.size;
         for(int i = 0; i < size; i++){
             for(int j = 0; j < size; j++){
                 pp.grid[i][j] = new Button();
                 switch(maps[i][j]){
                     case "monster": {
-                        ImageView monster = new ImageView(new Image("/img/monster.png"));
+                        ImageView monster = new ImageView(new Image("/img/mon_bg.png"));
                         monster.setFitHeight(32);
                         monster.setFitWidth(32);
                         pp.grid[i][j].setGraphic(monster);
@@ -175,7 +177,7 @@ public class PlayController {
                         break;
                     }
                     case "potion": {
-                        ImageView potion = new ImageView(new Image("/img/potion.png"));
+                        ImageView potion = new ImageView(new Image("/img/potion_bg.png"));
                         potion.setFitWidth(32);
                         potion.setFitHeight(32);
                         pp.grid[i][j].setGraphic(potion);
@@ -183,15 +185,24 @@ public class PlayController {
 
                         break;
                     }
-                    case "wall": {
+                    case "tree": {
                         ImageView tree = new ImageView(new Image("/img/tree.png"));
                         tree.setFitWidth(32);
                         tree.setFitHeight(32);
 
 
                         pp.grid[i][j].setGraphic(tree);
-                        pp.grid[i][j].setId("wall");
+                        pp.grid[i][j].setId("tree");
 
+                        break;
+                    }
+                    case "mtn":{
+                        ImageView mtn = new ImageView(new Image("/img/mountain.png"));
+                        mtn.setFitHeight(32);
+                        mtn.setFitWidth(32);
+
+                        pp.grid[i][j].setGraphic(mtn);
+                        pp.grid[i][j].setId("mtn");
                         break;
                     }
                     default: {
@@ -216,7 +227,7 @@ public class PlayController {
     public void drawCharacter(){
 //        System.out.println("Y"+data.ch.posY + "x"+ data.ch.posX);
 //        System.out.println("id" +pp.grid[data.ch.posY][data.ch.posX]);
-        pp.grid[data.ch.posY][data.ch.posX].setGraphic(new ImageView(data.ch.avatar));
+        pp.grid[data.ch.posY][data.ch.posX].setGraphic(new ImageView(data.ch.avatarbg));
         pp.pos.setText("(x:"+data.ch.posX+" , y:" + data.ch.posY+")");
     }
 

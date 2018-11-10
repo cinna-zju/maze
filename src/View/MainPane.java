@@ -71,6 +71,9 @@ public class MainPane extends BorderPane {
 
 	    this.setTop(hb);
 
+	    bgv.setFitWidth(300);
+	    bgv.setFitHeight(300);
+
 
 
 

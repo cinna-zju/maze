@@ -5,7 +5,6 @@ import Model.Maze;
 import View.CreationPane;
 import View.MainPane;
 import View.PlayPane;
-import View.Rotation;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -39,10 +38,8 @@ public class Game extends Application {
             maze = new Maze();
             stage = pStage;
 
-
             mp = new MainPane();
             mpCtrl = new MainPaneController(mp, maze);
-
 
             cp = new CreationPane();
             cpCtrl = new CreationController(cp, maze);
@@ -50,14 +47,11 @@ public class Game extends Application {
             pp = new PlayPane();
             ppCtrl = new PlayController(pp, maze);
 
-
-
-
             mp.init();
             mpCtrl.init();
 
 
-            Scene firstScene = new Scene(mp, 800, 800);
+            Scene firstScene = new Scene(mp, 600, 600);
 
             pStage.setTitle("Maze");
             pStage.setScene(firstScene);

@@ -1,6 +1,7 @@
 package View;
 
 
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -29,7 +30,7 @@ public class CreationPane extends BorderPane {
 
 
     public CreationPane(){
-        size = 8;
+        size = 14;
 
     }
 
@@ -42,23 +43,54 @@ public class CreationPane extends BorderPane {
         Treasure = new Button("treasure");
         Potion = new Button("potion");
 
+        ImageView btnImg;
+        btnImg = new ImageView(new Image("/img/monster.png"));
 
-        Monster.setGraphic(new ImageView(new Image("/img/monster.png")));
-        Treasure.setGraphic(new ImageView(new Image("/img/treasure.png")));
-        Potion.setGraphic(new ImageView(new Image("/img/potion.png")));
+        btnImg.setFitWidth(32);
+        btnImg.setFitHeight(32);
 
-        Monster.setStyle("-fx-pref-width: 180px; -fx-pref-height: 32px;-fx-padding: 0;");
-        Treasure.setStyle("-fx-pref-width: 180px; -fx-pref-height: 32px;-fx-padding: 0;");
-        Potion.setStyle("-fx-pref-width: 180px; -fx-pref-height: 32px;-fx-padding: 0;");
+        Monster.setGraphic(btnImg);
 
+        btnImg = new ImageView(new Image(("/img/treasure.png")));
+        btnImg.setFitWidth(32);
+        btnImg.setFitHeight(32);
 
+        Treasure.setGraphic(btnImg);
 
-        this.setLeft(new VBox(Monster, Treasure, Potion));
+        btnImg = new ImageView(new Image(("/img/potion.png")));
+        btnImg.setFitWidth(32);
+        btnImg.setFitHeight(32);
+
+        Potion.setGraphic(btnImg);
+
+        String styBtn = "-fx-background-color: \n" + "        #c3c4c4,\n"
+                + "        linear-gradient(#d6d6d6 50%, white 100%),\n"
+                + "        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);\n"
+                + "    -fx-background-radius: 30;\n" + "    -fx-background-insets: 0,1,1;\n"
+                + "    -fx-text-fill: black;\n"
+                + "    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );";
+
+        Monster.setStyle(styBtn);
+        Treasure.setStyle(styBtn);
+        Potion.setStyle(styBtn);
+
+        VBox vb = new VBox(Monster, Treasure, Potion);
+        vb.setSpacing(20);
+
+        this.setLeft(vb);
 
         next = new Button("next");
         back = new Button("back");
 
-        this.setBottom(new HBox(back, next));
+
+        next.setStyle(styBtn);
+        back.setStyle(styBtn);
+
+
+        HBox hb = new HBox(back, next);
+        hb.setAlignment(Pos.CENTER_RIGHT);
+        hb.setSpacing(20);
+        this.setBottom(hb);
 
         grid = new Label[size][size];
 
@@ -81,7 +113,7 @@ public class CreationPane extends BorderPane {
 //        System.out.println(grid[0][0].getHeight()+" "+grid[0][0].getWidth());
 
         this.setCenter(gp);
-        this.setStyle("-fx-spacing: 20px; -fx-padding: 30px");
+        this.setStyle("-fx-spacing: 20px; -fx-padding: 30px; -fx-hgap: 30px;");
 
 
 
