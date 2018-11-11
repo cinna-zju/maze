@@ -41,6 +41,8 @@ public class CreationController {
             ClipboardContent content = new ClipboardContent();
             content.putString("monster");
             db.setContent(content);
+            db.setDragView(new Image("/img/monster.png"));
+
             event.consume();
         });
 
@@ -49,6 +51,7 @@ public class CreationController {
             ClipboardContent content = new ClipboardContent();
             content.putString("treasure");
             db.setContent(content);
+            db.setDragView(new Image("/img/treasure.png"));
             event.consume();
         });
 
@@ -57,6 +60,7 @@ public class CreationController {
             ClipboardContent content = new ClipboardContent();
             content.putString("potion");
             db.setContent(content);
+            db.setDragView(new Image("/img/potion.png"));
             event.consume();
         });
 
@@ -108,7 +112,7 @@ public class CreationController {
                     }
 
                     if(src.equals("treasure")){
-                        img.setImage(new Image("/img/treasure.png"));
+                        img.setImage(new Image("/img/treasure_bg.png"));
                         view.grid[x][y].setGraphic(img);
                         view.grid[x][y].setId("treasure");
                     }

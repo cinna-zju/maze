@@ -38,7 +38,7 @@ public class MainPaneController {
             System.exit(0);
         });
 
-        for(int i = 0; i < 4; i++){
+        for(int i = 0; i < 3; i++){
             int t = i;
             mp.characterPane.v[t].setOnMouseClicked(event -> {
 
@@ -55,7 +55,7 @@ public class MainPaneController {
     }
 
     public void choose(int x){
-        for(int i = 0; i < 4; i++){
+        for(int i = 0; i < 3; i++){
             mp.characterPane.v[i].setStyle("-fx-background-color: #eff144"); //yellow
             mp.characterPane.add[i].setVisible(false);
         }
@@ -63,13 +63,13 @@ public class MainPaneController {
         mp.characterPane.add[x].setVisible(true);
         data.ch = mp.characterPane.ch[x];
 
-        mp.avatar = data.ch.avatar;
         if(mp.sp.getChildren().size() > 1) {
             mp.sp.getChildren().remove(1);
         }
-        ImageView chv = new ImageView(mp.avatar);
-        chv.setFitHeight(100);
-        chv.setFitWidth(100);
+        ImageView chv = new ImageView(data.ch.ava64);
+        chv.setFitWidth(128);
+        chv.setFitHeight(128);
+
         mp.sp.getChildren().add(chv);
         mp.sp.setAlignment(Pos.BOTTOM_CENTER);
         mp.map.setDisable(false);

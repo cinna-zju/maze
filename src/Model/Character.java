@@ -10,6 +10,7 @@ public class Character {
 	public int posY;
 	public Image avatar;
 	public Image avatarbg;
+	public Image ava64;
 	public String name;
 	public int jumpTimes;
 
@@ -24,11 +25,19 @@ public class Character {
 		posX = 0;
 		posY = 0;
 		switch (this.name){
-			case "professor":{
-				avatar = new Image("/img/professor.png");break;
+			case "hunter":{
+				avatar = new Image("/img/hunter.png");
+				avatarbg = new Image("/img/hunter_bg.png");
+				ava64 = new Image("/img/hunter_64.png");
+				break;
 			}
-			case "warrior":{
-				avatar = new Image("/img/warrior.png");break;
+			case "soldier":{
+				avatar = new Image("/img/soldier.png");
+                avatarbg = new Image("/img/soldier_bg.png");
+                ava64 = new Image("/img/soldier_64.png");
+
+
+                break;
 
 			}
 			case "king":{
@@ -37,8 +46,13 @@ public class Character {
 				break;
 
 			}
-			case "soldier":{
-				avatar = new Image("/img/soldier.png");break;
+			case "rider":{
+				avatar = new Image("/img/rider.png");
+                avatarbg = new Image("/img/rider_bg.png");
+                ava64 = new Image("/img/rider_64.png");
+
+
+                break;
 			}
 
 		}

@@ -20,7 +20,7 @@ public class CharacterPane extends HBox{
  	public Model.Character[] ch;
 
     public Label[] life, skill, power;
-    public Image bg = new Image("/img/theatre.png");
+
 
 
 
@@ -34,19 +34,19 @@ public class CharacterPane extends HBox{
 		power = new Label[4];
 
 
-		v = new VBox[4];
-		basic = new VBox[4];
-		add = new VBox[4];
+		v = new VBox[3];
+		basic = new VBox[3];
+		add = new VBox[3];
 
-		ch = new Model.Character[4];
+		ch = new Model.Character[3];
 
 	}
 
 	public void init(){
 
-	    String pros[] = {"professor", "soldier", "king", "warrior"} ;
+	    String pros[] = {"hunter", "soldier", "rider"} ;
 
-	    for (int i = 0; i < 4; i++){
+	    for (int i = 0; i < 3; i++){
 	        ch[i] = new Model.Character(3,1,pros[i]);
             life[i] = new Label("Life : " + ch[i].getLife());
             skill[i] = new Label("Skill : jump");
@@ -59,9 +59,8 @@ public class CharacterPane extends HBox{
             v[i].setStyle("-fx-background-color: #eff144; ");
             v[i].setPrefWidth(150);
 
-            ImageView bgv = new ImageView(bg);
-            StackPane sp = new StackPane(bgv, new ImageView(ch[i].avatar));
-            bgv.setFitWidth(150);
+
+
 
             basic[i].getChildren().addAll(new ImageView(ch[i].avatar) ,new Label(ch[i].name));
 

@@ -50,18 +50,19 @@ public class Rotation extends BorderPane {
 
 	public void init(){
         HBox hb = new HBox();
-        hb.setPadding(new Insets(60,10,10,10));
+        hb.setPadding(new Insets(10,10,10,10));
         hb.setAlignment(Pos.BASELINE_CENTER);
 
         Text legend = new Text();
         legend.setText("Press SPACE when the line passes the orange part!");
         legend.setStrokeWidth(10);
 
-        ch = new ImageView(Maze.ch.avatar);
+        ch = new ImageView(Maze.ch.ava64);
         monster = new ImageView(new Image("/img/monster.png"));
 
+
         HBox imgs = new HBox(ch, monster);
-        imgs.setSpacing(500);
+        imgs.setSpacing(180);
 
 
         hb.getChildren().add(legend);

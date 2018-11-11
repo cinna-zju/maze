@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
+import javafx.stage.Stage;
 
 public class PlayController {
     
@@ -116,10 +117,14 @@ public class PlayController {
             fightp.init();
             Fight fightCtrl = new Fight(fightp, data);
 
-            Scene fight = new Scene(fightp, 800, 600);
+            Scene fight = new Scene(fightp, 400, 500);
             fightCtrl.init(fight, x, y);
 
-            Game.stage.setScene(fight);
+//            Game.stage.setScene(fight);
+            Stage stage = new Stage();
+            stage.setTitle("Fighting!");
+            stage.setScene(fight);
+            stage.show();
             return;
 
         }
@@ -168,7 +173,7 @@ public class PlayController {
                         break;
                     }
                     case "treasure": {
-                        ImageView tre = new ImageView(new Image("/img/treasure.png"));
+                        ImageView tre = new ImageView(new Image("/img/treasure_bg.png"));
                         tre.setFitHeight(32);
                         tre.setFitWidth(32);
                         pp.grid[i][j].setGraphic(tre);

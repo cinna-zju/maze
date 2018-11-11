@@ -23,20 +23,18 @@ public class Fight {
 
     public void init(Scene f, int x, int y){
         TranslateTransition transCh = new TranslateTransition(Duration.millis(500), view.ch);
-        transCh.setByX(500);
+        transCh.setByX(200);
         transCh.setCycleCount(2);
         transCh.setAutoReverse(true);
 
         TranslateTransition transMon = new TranslateTransition(Duration.millis(400), view.monster);
-        transMon.setByX(-400);
+        transMon.setByX(-200);
         transMon.setCycleCount(2);
         transMon.setAutoReverse(true);
 
         f.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                Scene temp = Game.stage.getScene();
-                System.out.println(temp);
 
                 if(event.getCode()== KeyCode.SPACE) {
                     view.secondTime.stop();
