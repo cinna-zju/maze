@@ -29,7 +29,8 @@ public class PlayController {
         av.setFitHeight(64);
         pp.head.setGraphic(av);
         pp.name.setText(data.ch.name);
-        pp.jump.setText("Jump Left: " + Integer.toString(data.ch.jumpTimes));
+
+        pp.jump.setVisible(false);
 
         pp.gp.setOnKeyPressed(event -> {
 
@@ -110,7 +111,15 @@ public class PlayController {
         int y = data.ch.posY+dy;
 
         if( x < 0 || x >= data.size || y < 0 || y >= data.size) return;
-        if(data.src[y][x] == "tree" || data.src[y][x] == "treasure" || data.src[y][x] == "mtn") return;
+        if(data.src[y][x] == "tree" || data.src[y][x] == "mtn") return;
+
+        if(data.src[y][x] == "treasure"){
+            data.src[y][x] = "";
+            data.ch.jumpTimes += 1;
+            pp.jump.setText("Jump Left: " + Integer.toString(data.ch.jumpTimes));
+            pp.jump.setVisible(true);
+
+        }
 
         if(data.src[y][x] == "monster"){
             Rotation fightp = new Rotation();
@@ -125,7 +134,7 @@ public class PlayController {
             stage.setTitle("Fighting!");
             stage.setScene(fight);
             stage.show();
-            return;
+
 
         }
 

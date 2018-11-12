@@ -63,15 +63,15 @@ public class MainPaneController {
         mp.characterPane.add[x].setVisible(true);
         data.ch = mp.characterPane.ch[x];
 
-        if(mp.sp.getChildren().size() > 1) {
-            mp.sp.getChildren().remove(1);
+        if(mp.chs.getChildren().size() > 1) {
+            mp.chs.getChildren().remove(1);
         }
         ImageView chv = new ImageView(data.ch.ava64);
-        chv.setFitWidth(128);
-        chv.setFitHeight(128);
+        chv.setFitWidth(256);
+        chv.setFitHeight(256);
 
-        mp.sp.getChildren().add(chv);
-        mp.sp.setAlignment(Pos.BOTTOM_CENTER);
+        mp.chs.getChildren().add(chv);
+        mp.chs.setAlignment(Pos.TOP_CENTER);
         mp.map.setDisable(false);
 
 

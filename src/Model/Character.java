@@ -20,7 +20,7 @@ public class Character {
 		this.power = power;
 		this.name = name;
 
-		jumpTimes = 3;
+		jumpTimes = 0;
 
 		posX = 0;
 		posY = 0;

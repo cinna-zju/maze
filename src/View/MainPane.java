@@ -17,11 +17,10 @@ public class MainPane extends BorderPane {
 	public VBox vb;
 	public Button exit, map;
 	public CharacterPane characterPane;
+	public VBox chs;
     Label title;
 
-    public Image avatar = new Image("/img/theatre.png");
     public ImageView bgv;
-    public StackPane sp;
 
 
 
@@ -33,8 +32,6 @@ public class MainPane extends BorderPane {
         characterPane = new CharacterPane();
         title = new Label("Crazy Maze!");
 		vb = new VBox();
-
-		bgv = new ImageView(avatar);
 
 	}
 	
@@ -71,15 +68,12 @@ public class MainPane extends BorderPane {
 
 	    this.setTop(hb);
 
-	    bgv.setFitWidth(300);
-	    bgv.setFitHeight(300);
 
 
+	    chs = new VBox(characterPane);
 
 
-	    sp = new StackPane(bgv);
-
-        this.setCenter(new VBox(sp, characterPane));
+        this.setCenter(chs);
         this.setBottom(vb);
 
 

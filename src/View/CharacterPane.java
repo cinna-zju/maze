@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 
@@ -30,9 +29,8 @@ public class CharacterPane extends HBox{
 
 
 		life = new Label[4];
-		skill = new Label[4];
+		//skill = new Label[4];
 		power = new Label[4];
-
 
 		v = new VBox[3];
 		basic = new VBox[3];
@@ -48,8 +46,18 @@ public class CharacterPane extends HBox{
 
 	    for (int i = 0; i < 3; i++){
 	        ch[i] = new Model.Character(3,1,pros[i]);
-            life[i] = new Label("Life : " + ch[i].getLife());
-            skill[i] = new Label("Skill : jump");
+            life[i] = new Label("Life : ");
+            HBox vb = new HBox(life[i]);
+
+            for(int j = 0; j < ch[i].getLife(); j++){
+            	ImageView imgv = new ImageView(new Image("/img/heart.png"));
+            	imgv.setFitWidth(15);
+            	imgv.setFitHeight(15);
+            	vb.getChildren().add(imgv);
+
+			}
+
+
             power[i] = new Label("Power : " +ch[i].getPower());
 
             v[i] = new VBox();
@@ -66,7 +74,7 @@ public class CharacterPane extends HBox{
 
             this.getChildren().add(v[i]);
 
-            add[i].getChildren().addAll(life[i], skill[i], power[i]);
+            add[i].getChildren().addAll(vb, power[i]);
             add[i].setVisible(false);
 
             v[i].getChildren().addAll(basic[i], add[i]);
