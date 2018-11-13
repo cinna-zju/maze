@@ -81,7 +81,6 @@ public class CreationController {
 
                     view.grid[i][j].setGraphic(tree);
                     view.grid[i][j].setId("tree");
-                    data.src[i][j] = "tree";
                 }
 
                 if (data.isOpen[i][j] == 2){
@@ -91,7 +90,25 @@ public class CreationController {
 
                     view.grid[i][j].setGraphic(mtn);
                     view.grid[i][j].setId("mtn");
-                    data.src[i][j] = "mtn";
+
+                }
+
+                if (data.isOpen[i][j] == 3){
+                    ImageView sword = new ImageView("/img/sword.png");
+                    view.grid[i][j].setGraphic(sword);
+                    view.grid[i][j].setId("sword");
+                }
+
+                if(data.isOpen[i][j] == 4){
+                    ImageView npc = new ImageView("/img/npc.png");
+                    view.grid[i][j].setGraphic(npc);
+                    view.grid[i][j].setId("npc");
+                }
+
+                if(data.isOpen[i][j] == 5){
+                    ImageView r = new ImageView("/img/river.png");
+                    view.grid[i][j].setGraphic(r);
+                    view.grid[i][j].setId("river");
                 }
 
                 view.grid[x][y].setOnDragOver(event -> {
@@ -105,23 +122,28 @@ public class CreationController {
                     ImageView img = new ImageView();
                     img.setFitHeight(32);
                     img.setFitWidth(32);
-                    if(src.equals("monster")){
-                        img.setImage(new Image("/img/mon_bg.png"));
-                        view.grid[x][y].setGraphic(img);
-                        view.grid[x][y].setId("monster");
+
+                    if(data.isOpen[x][y]==1){
+                        if(src.equals("monster")){
+                            img.setImage(new Image("/img/mon_bg.png"));
+                            view.grid[x][y].setGraphic(img);
+                            view.grid[x][y].setId("monster");
+                        }
+
+                        if(src.equals("treasure")){
+                            img.setImage(new Image("/img/treasure_bg.png"));
+                            view.grid[x][y].setGraphic(img);
+                            view.grid[x][y].setId("treasure");
+                        }
+
+                        if(src.equals("potion")){
+                            img.setImage(new Image("/img/potion_bg.png"));
+                            view.grid[x][y].setGraphic(img);
+                            view.grid[x][y].setId("potion");
+                        }
+
                     }
 
-                    if(src.equals("treasure")){
-                        img.setImage(new Image("/img/treasure_bg.png"));
-                        view.grid[x][y].setGraphic(img);
-                        view.grid[x][y].setId("treasure");
-                    }
-
-                    if(src.equals("potion")){
-                        img.setImage(new Image("/img/potion_bg.png"));
-                        view.grid[x][y].setGraphic(img);
-                        view.grid[x][y].setId("potion");
-                    }
 
 
                     event.consume();

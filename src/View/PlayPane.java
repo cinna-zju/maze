@@ -38,6 +38,7 @@ public class PlayPane extends BorderPane {
         gp = new GridPane();
         head = new Label();
         name = new Label();
+        name.setStyle("-fx-font-size: 20");
 
         jump = new Label();
 

@@ -22,12 +22,12 @@ public class Fight {
     }
 
     public void init(Scene f, int x, int y){
-        TranslateTransition transCh = new TranslateTransition(Duration.millis(500), view.ch);
+        TranslateTransition transCh = new TranslateTransition(Duration.millis(300), view.ch);
         transCh.setByX(200);
         transCh.setCycleCount(2);
         transCh.setAutoReverse(true);
 
-        TranslateTransition transMon = new TranslateTransition(Duration.millis(400), view.monster);
+        TranslateTransition transMon = new TranslateTransition(Duration.millis(300), view.monster);
         transMon.setByX(-200);
         transMon.setCycleCount(2);
         transMon.setAutoReverse(true);
@@ -54,9 +54,8 @@ public class Fight {
                         transMon.play();
                         data.ch.setLife(data.ch.getLife()-1);
                     }
-                    transCh.setOnFinished(e -> Game.stage.setScene(CreationController.ps));
-                    transMon.setOnFinished(e -> Game.stage.setScene(CreationController.ps));
-
+                    transCh.setOnFinished(e -> Game.ppCtrl.stage.close());
+                    transMon.setOnFinished(e -> Game.ppCtrl.stage.close());
 
 
                 }

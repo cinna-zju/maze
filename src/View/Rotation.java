@@ -59,10 +59,12 @@ public class Rotation extends BorderPane {
 
         ch = new ImageView(Maze.ch.ava64);
         monster = new ImageView(new Image("/img/monster.png"));
+        monster.setFitHeight(64);
+        monster.setFitWidth(64);
 
 
         HBox imgs = new HBox(ch, monster);
-        imgs.setSpacing(180);
+        imgs.setSpacing(272);
 
 
         hb.getChildren().add(legend);

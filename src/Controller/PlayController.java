@@ -5,6 +5,7 @@ import Model.Maze;
 import View.PlayPane;
 import View.Rotation;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 
 import javafx.scene.image.Image;
@@ -16,10 +17,13 @@ public class PlayController {
     
     private Maze data;
     static public PlayPane pp;
+    public Stage stage;
+
 
     public PlayController(PlayPane pp, Maze data){
         this.pp = pp;
         this.data = data;
+        stage = new Stage();
 
     }
 
@@ -130,7 +134,6 @@ public class PlayController {
             fightCtrl.init(fight, x, y);
 
 //            Game.stage.setScene(fight);
-            Stage stage = new Stage();
             stage.setTitle("Fighting!");
             stage.setScene(fight);
             stage.show();
@@ -147,6 +150,26 @@ public class PlayController {
                 data.ch.setLife(data.ch.getLife()+1);
             }
         }
+
+        if(data.src[y][x] == "sword"){
+            Alert alt = new Alert(Alert.AlertType.INFORMATION);
+            alt.setContentText("Finally, you find your sword!\nThe world will be peaceful AGAIN! :)");
+            alt.setGraphic(new ImageView(new Image("/img/sword.png")));
+            alt.setHeaderText("YOU WIN");
+            alt.showAndWait();
+
+
+        }
+
+        if(data.src[y][x] == "npc"){
+            Alert alt = new Alert(Alert.AlertType.INFORMATION);
+            alt.setContentText("Welcome! I know you want to find your sword.\nBe careful! It is not safe here.");
+            alt.setGraphic(new ImageView(new Image("/img/npc.png")));
+            alt.setHeaderText("Alice");
+            alt.showAndWait();
+
+        }
+
 
         if(data.src[y][x] == ""){
 
@@ -219,6 +242,30 @@ public class PlayController {
                         pp.grid[i][j].setId("mtn");
                         break;
                     }
+                    case "npc":{
+                        ImageView npc = new ImageView("/img/npc.png");
+                        pp.grid[i][j].setGraphic(npc);
+                        pp.grid[i][j].setId("npc");
+                        System.out.println("npc");
+                        break;
+
+                    }
+                    case "sword":{
+                        ImageView sword = new ImageView("/img/sword.png");
+                        pp.grid[i][j].setGraphic(sword);
+                        pp.grid[i][j].setId("sword");
+                        break;
+                    }
+
+                    case "river":{
+                        ImageView r = new ImageView("/img/river.png");
+                        pp.grid[i][j].setGraphic(r);
+                        pp.grid[i][j].setId("river");
+                        break;
+
+                    }
+
+
                     default: {
                         ImageView grass = new ImageView(new Image("/img/grass.png"));
                         grass.setFitHeight(32);
